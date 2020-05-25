@@ -6,7 +6,7 @@ data_api = Blueprint('data_api', __name__)
 
 @data_api.route("/datarecords")
 def get_data():
-    data = pd.read_excel("../../data/fake_job_postings.xlsx")
+    data = pd.read_excel("./templates/fake_job_postings.xlsx")
     fraud = data[data['fraudulent'] == 1]
     real = data[data['fraudulent'] == 0]
     fraud = fraud.iloc[0:30]
