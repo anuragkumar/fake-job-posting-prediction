@@ -1,6 +1,6 @@
 from flask import Flask, send_from_directory
 from eda import eda_api
-from data import data_api
+from data_api import data_api
 from flask_cors import CORS
 
 app = Flask(__name__)
