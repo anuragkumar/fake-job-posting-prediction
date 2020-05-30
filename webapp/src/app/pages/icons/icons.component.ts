@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import Chart from 'chart.js';
+import {DataClientService} from '../../services/data.client.service';
 
 @Component({
   selector: "app-icons",
@@ -14,9 +15,29 @@ export class IconsComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
-  constructor() {}
+  constructor(private dataService: DataClientService) {}
 
   ngOnInit() {
+    this.createMyChart('industry', 'industryChart', 'red');
+    this.createMyChart('function', 'functionChart', 'yellow', 'line');
+    this.createMyChart('department', 'departmentChart', 'orange', 'line');
+    this.createMyChart('required_experience', 'experienceChart', 'purple');
+    this.createMyChart('employment_type', 'employmentChart', 'darkBlue', 'line');
+    this.createMyChart('education_bin', 'educationChart', 'blue');
+    this.createMyChart('country', 'countryChart1', 'darkGreen');
+    this.createMyChart('state', 'stateChart', 'green', 'line');
+    this.createMyChart('city', 'cityChart', 'darkPurple', 'line');
+    this.createMyChart('telecommuting', 'telecommuteChart', 'darkRed', 'bar', true);
+    this.createMyChart('has_company_logo', 'companyLogoChart', 'darkOrange', 'bar', true);
+    this.createMyChart('has_questions', 'hasQuestionsChart', 'lightGrey', 'bar', true);
+  }
+
+  public updateOptions() {
+    this.myChartData.data.datasets[0].data = this.data;
+    this.myChartData.update();
+  }
+
+  createMyChart = (content, canvasName, chartColor, chartType='bar', flag=false) => {
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {
       maintainAspectRatio: false,
       legend: {
@@ -283,12 +304,12 @@ export class IconsComponent implements OnInit {
             color: 'rgba(29,140,248,0.1)',
             zeroLineColor: "transparent",
           },
-          ticks: {
-            suggestedMin: 60,
-            suggestedMax: 120,
-            padding: 20,
-            fontColor: "#9e9e9e"
-          }
+          // ticks: {
+          //   suggestedMin: 60,
+          //   suggestedMax: 120,
+          //   padding: 20,
+          //   fontColor: "#9e9e9e"
+          // }
         }],
 
         xAxes: [{
@@ -305,155 +326,56 @@ export class IconsComponent implements OnInit {
         }]
       }
     };
-    // first graph
-    this.canvas = document.getElementById("chartLineRed");
-    this.ctx  = this.canvas.getContext("2d");
-    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
 
-    gradientStroke.addColorStop(1, 'rgba(255, 0, 0, 0.2)');
-    gradientStroke.addColorStop(0.4, 'rgba(255, 0, 0, 0.0)');
-    gradientStroke.addColorStop(0, 'rgba(255, 0, 0, 0)'); //blue colors
+    this.dataService.getBarPlotData({plotName: content, boolean: flag}).subscribe(res => {
+      console.log(res);
+
+      const colorCodes = {
+        darkRed: ['rgba(100, 30, 22, 0.2)', 'rgba(100, 30, 22, 0.0)', 'rgba(100, 30, 22, 0)', '#641E16'],
+        darkPurple: ['rgba(255, 102, 255, 0.2)', 'rgba(255, 102, 255, 0.0)', 'rgba(255, 102, 255, 0)', '#ff66ff'],
+        red: ['rgba(255, 0, 0, 0.2)', 'rgba(255, 0, 0, 0.0)', 'rgba(255, 0, 0, 0)', 'red'],
+        purple: ['rgba(155, 89, 182, 0.2)', 'rgba(155, 89, 182, 0.0)', 'rgba(155, 89, 182, 0)', '#9B59B6'],
+        darkBlue: ['rgba(255, 0, 102, 0.2)', 'rgba(255, 0, 102, 0.0)', 'rgba(255, 0, 102, 0)', '#ff0066'],
+        blue: ['rgba(80, 191, 230, 0.2)', 'rgba(80, 191, 230, 0.0)', 'rgba(80, 191, 230, 0)', '#50BFE6'],
+        darkGreen: ['rgba(20, 90, 50, 0.2)', 'rgba(20, 90, 50, 0.0)', 'rgba(20, 90, 50, 0)', '#145A32'],
+        green: ['rgba(102, 255, 51, 0.2)', 'rgba(102, 255, 51, 0.0)', 'rgba(102, 255, 51, 0)', '#66ff33'],
+        yellow: ['rgba(244, 208, 63, 0.2)', 'rgba(244, 208, 63, 0.0)', 'rgba(244, 208, 63, 0)', '#F4D03F'],
+        orange: ['rgba(230, 126, 34, 0.2)', 'rgba(230, 126, 34, 0.0)', 'rgba(230, 126, 34, 0)', '#E67E22'],
+        darkOrange: ['rgba(186, 74, 0, 0.2)', 'rgba(186, 74, 0, 0.0)', 'rgba(186, 74, 0, 0)', '#BA4A00'],
+        lightGrey: ['rgba(149, 165, 166, 0.2)', 'rgba(149, 165, 166, 0.0)', 'rgba(149, 165, 166, 0)', '#95A5A6'],
+      };
+
+      this.canvas = document.getElementById(canvasName);
+      this.ctx  = this.canvas.getContext("2d");
+      var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke.addColorStop(1, colorCodes[chartColor][0]);
+      gradientStroke.addColorStop(0.4, colorCodes[chartColor][1]);
+      gradientStroke.addColorStop(0, colorCodes[chartColor][2]);
 
 
-    var myChart = new Chart(this.ctx, {
-      type: 'bar',
-      responsive: true,
-      legend: {
-        display: false
-      },
-      data: {
-        labels: ['US', 'GB', 'GR', 'CA', 'DE', 'nan', 'NZ', 'IN', 'AU', 'PH', 'NL'],
-        datasets: [{
-          label: "Countries",
-          fill: true,
-          backgroundColor: gradientStroke,
-          hoverBackgroundColor: gradientStroke,
-          borderColor: 'red',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          data: [10656, 2384, 940, 457, 383, 346, 333, 276, 214, 132, 127],
-        }]
-      },
-      options: gradientBarChartConfiguration
+      var myChart = new Chart(this.ctx, {
+        type: chartType,
+        responsive: true,
+        legend: {
+          display: false
+        },
+        data: {
+          labels: res[0],
+          datasets: [{
+            label: 'Industries',
+            fill: true,
+            backgroundColor: gradientStroke,
+            hoverBackgroundColor: gradientStroke,
+            borderColor: colorCodes[chartColor][3],
+            borderWidth: 2,
+            borderDash: [],
+            borderDashOffset: 0.0,
+            data: res[1],
+          }]
+        },
+        options: gradientBarChartConfiguration
+      });
     });
-
-    // second graph
-    this.canvas = document.getElementById("CountryChart");
-    this.ctx  = this.canvas.getContext("2d");
-    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
-    gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
-    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
-
-
-    var myChart = new Chart(this.ctx, {
-      type: 'bar',
-      responsive: true,
-      legend: {
-        display: false
-      },
-      data: {
-        labels: ['Fraudulent', 'Real'],
-        datasets: [{
-          label: "Countries",
-          fill: true,
-          backgroundColor: gradientStroke,
-          hoverBackgroundColor: gradientStroke,
-          borderColor: '#1f8ef1',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          data: [866, 17014],
-        }]
-      },
-      options: gradientBarChartConfiguration
-    });
-
-    // third graph
-    this.canvas = document.getElementById("chartLineGreen");
-    this.ctx  = this.canvas.getContext("2d");
-    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke.addColorStop(1, 'rgba(123, 239, 178, 0.2)');
-    gradientStroke.addColorStop(0.4, 'rgba(123, 239, 178, 0)');
-    gradientStroke.addColorStop(0, 'rgba(123, 239, 178, 0)'); //blue colors
-
-
-    var myChart = new Chart(this.ctx, {
-      type: 'bar',
-      responsive: true,
-      legend: {
-        display: false
-      },
-      data: {
-        labels: ['Mid-Senior level', 'Entry level', 'Associate', 'Not Applicable', 'Director', 'Internship', 'Executive'],
-        datasets: [{
-          label: "Countries",
-          fill: true,
-          backgroundColor: gradientStroke,
-          hoverBackgroundColor: gradientStroke,
-          borderColor: 'green',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          data: [3809, 2697, 2297, 1116, 389, 381, 141],
-        }]
-      },
-      options: gradientBarChartConfiguration
-    });
-
-
-
-    var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    this.datasets = [
-      [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
-      [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
-      [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
-    ];
-    this.data = this.datasets[0];
-
-
-
-    this.canvas = document.getElementById("chartBig1");
-    this.ctx = this.canvas.getContext("2d");
-
-    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke.addColorStop(1, 'rgba(233,32,16,0.2)');
-    gradientStroke.addColorStop(0.4, 'rgba(233,32,16,0.0)');
-    gradientStroke.addColorStop(0, 'rgba(233,32,16,0)'); //red colors
-
-    var config = {
-      type: 'line',
-      data: {
-        labels: chart_labels,
-        datasets: [{
-          label: "My First dataset",
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#ec250d',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#ec250d',
-          pointBorderColor: 'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#ec250d',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: this.data,
-        }]
-      },
-      options: gradientChartOptionsConfigurationWithTooltipRed
-    };
-    this.myChartData = new Chart(this.ctx, config);
-  }
-
-  public updateOptions() {
-    this.myChartData.data.datasets[0].data = this.data;
-    this.myChartData.update();
   }
 }
