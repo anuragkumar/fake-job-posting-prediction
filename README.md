@@ -9,7 +9,7 @@ The dataset contains:
  - 17,880 rows
  - 18 features
 	 - 5 features (title, company_profile, description, requirements and benefits) are long texts
-	 - Rest 13 features are mainly numeric fields r categorical data
+	 - Rest 13 features are mainly numeric fields or categorical data
 
 The dataset is provided with **Fraudulent** column where value of 1 denotes the job is a fraud and 0 for real jobs.
 
@@ -43,7 +43,7 @@ Here are the steps performed in Topic Modeling
 - Add topic probabilities as metadata to the dataset
 
 **Topic Coherence** is the degree of sementic similarity between high scoring words in the topic. It is modern alternative to **Perplexity** which is how surprised a model is by the new data (normalized log-likelihood of held out test data).
-**CV_coherence** is a measure based on sliding window, one-set segmentation of the top words and an indirect confirmation measure that uses Normalized Pointwise Mutual Information (NPMI) and cosine similarity. [Link](https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0)
+**CV_coherence** is a "measure based on sliding window, one-set segmentation of the top words and an indirect confirmation measure that uses Normalized Pointwise Mutual Information (NPMI) and cosine similarity." [Link](https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0)
 
 Parameters:
  - Number of topics
@@ -56,6 +56,8 @@ From [Link](https://www.thoughtvector.io/blog/lda-alpha-and-beta-parameters-the-
 ### Coherence Score Graph
 
 ![Coherence Score](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Coherence_Score.png)
+
+Maximum coherence score with 22 topics. 
 
 ### Visualize topics using LDAvis
 The topics visualization can be found at [link].
@@ -71,14 +73,22 @@ Following are the steps performed:
 ## Dummy Variables
 - All variables are categorical, create dummies and drop one level to avoid collinearity
 - There are many values for countries, so created dummies only if more that 100 posts in that country
-- Converted telecommuting, has_questions and has_company_logo features into numneric
+
 ## SMOTE: Class Imbalance
-SMOTE sampling on the training data such that even number of observations with each class. This funciton also does 80/20 train/test split.
+SMOTE sampling on the training data such that even number of observations with each class. This function also does 80/20 train/test split.
 
 SMOTE: synethic minority over-sampling technique  
-Synthesize new examples for the minority class rateher than oversample, which doesn't add any new information.
+Synthesize new examples for the minority class rather than oversample, which doesn't add any new information.
 
-"… SMOTE first selects a minority class instance a at random and finds its k nearest minority class neighbors. The synthetic instance is then created by choosing one of the k nearest neighbors b at random and connecting a and b to form a line segment in the feature space. The synthetic instances are generated as a convex combination of the two chosen instances a and b"
+"… SMOTE first selects a minority class instance a at random and finds its k nearest minority class neighbors. The synthetic instance is then created by choosing one of the k nearest neighbors b at random and connecting a and b to form a line segment in the feature space. The synthetic instances are generated as a convex combination of the two chosen instances a and b"    
+     
+SMOTE sampling on training data:
+- Original number of fraudulent in data is 687
+- Length of oversampled data is 26956
+- Number of real in oversampled data 13478
+- Number of fraudulent in oversampled data 13478
+- Proportion of real data in oversampled data is 0.5
+- Proportion of fraudulent data in oversampled data is  0.5
 
 ## Classification Models Used
 
@@ -144,7 +154,7 @@ SMOTE and class weighting are very similar.
 Iterations: repeat the following with each of these 4 scoring metrics: **roc auc, accuracy, precision, recall**
 
 1.  Balanced weighting
-    -   class_weigthing = 'balanced'
+    -   class_weighting = 'balanced'
     -   penalty = 'l1'
     -   fit(X_train, y_train)
 2.  SMOTE
@@ -166,6 +176,7 @@ Insights:
 3. Recall does the best at minimizing FNR (as is its purpose) and everything else is just slightly worse
 4. Precision more balanced, unclear which is better
 5. Baseline only slightly worse than tuned results
+Best: Recall or precision
 
 #### SMOTE
 
@@ -173,6 +184,7 @@ Insights:
 
 Insights:
 1. best model: ROC (all effectively the same incl baseline)
+Best: ROC   
 
 #### Elastic Net
 
@@ -193,6 +205,8 @@ Also, SMOTE was consistent across all 4 metrics and thus is a very robust model,
 
 ![Best Model ROC SMOTE ROC](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Best_Model_ROC_SMOTE_ROC.png)
 
+The lines show the 0.5 threshold. The threshold is appropriate because it reaches close to the top left of the graph and thus has a good tradeoff between FPR and TPR
+
 ### Ensemble Tree Models
 
 Code modified from [https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/) and [https://machinelearningmastery.com/xgboost-for-imbalanced-classification/](https://machinelearningmastery.com/xgboost-for-imbalanced-classification/)  
@@ -201,19 +215,11 @@ Specifically, guidance in how to and in what order to tune parameters from [http
 We did train/test split + SMOTE sampling.
 No need to drop one level of dummies in this case.
 
-Insights:
-- Original number of fraudulent in data is 687
-- length of oversampled data is  26956
-- Number of real in oversampled data 13478
-- Number of fraudulent 13478
-- Proportion of real data in oversampled data is  0.5
-- Proportion of fraudulent data in oversampled data is  0.5
-
 #### Baseline Model
 Results with all default values. 3 iterations: 
-- unbalanced origianl data
+- Unbalanced original data
 - SMOTE
-- balanced class weighting.
+- Balanced class weighting.
 
 #### Before Parameter Tuning
 ##### Unbalanced Metrics
@@ -254,7 +260,7 @@ Results with all default values. 3 iterations:
 
 #### Parameter Tuning
 Ideally would do full grid search with all parameters, but resource needs too much so doing sequential tuning instead.
-Tune most parameters with high learning rate (0.3) and low number of estimators (100) so that reasonable amount of time. Last step is to select correect learning rate and estimator number.
+Tune most parameters with high learning rate (0.3) and low number of estimators (100) so that reasonable amount of time. Last step is to select correct learning rate and estimator number.
 
 Parameters:
 -   Max depth: maximum tree depth. Larger makes trees more complex, more likely to overfit
@@ -262,7 +268,7 @@ Parameters:
 -   Gamma: minimum loss reduction required for a tree split
 -   Subsample: percent of data sampled to grow trees at each iteration. Smaller subsamples prevents overfitting
 -   Colsample_bytree: percent of features used when constructing tree for each tree created
--   Alpha: L1 regularizastion
+-   Alpha: L1 regularization
 -   Lambda: L2 regularization
 -   Learning rate: how quickly trees learn/update in iterations.
 -   Number of estimators: number of trees/iterations
@@ -278,16 +284,26 @@ Fit models with each of the 4 scoring metrics for both SMOTE and class weighted 
 Insights:
 - all very similar, ROC slightly better 
 - baseline significantly worse
+- Concerns about overfitting: when training, ROC was 0.999 but 0.83 on testing data. Worried that if get new test data, won't perform well because too variable. 
+Best: ROC
 
 ##### Balanced Weighting
 
 ![Ensemble Tree Balanced Weighting Parameter Tuned](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Ensemble_Tree_Model_Parameter_Tuned_Balanced_Weighting.png)
 
+Insights:
+- ROC overall most balanced. Very similar to precision
+- Recall much higher TPR, FPR. Low precision
+- Baseline significantly worse
+Best: ROC 
+
 #### Comparing Class Weighted ROC vs SMOTE
 
 ![Ensemble Tree SMOTE vs Class Weighted ROC](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Comparing_xgboost_SMOTE_vs_Weighted_ROC.png)
 
-### Comapring xgboost and Logistic Regression
+Class Weighting better in all categories and less overfit. 
+
+### Comparing xgboost and Logistic Regression
 
 ![xgboost vs LR](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Comparing_xgboost_vs_LR.png)
 
@@ -319,7 +335,7 @@ Would need disclaimers that this does not guarentee the post is not fake, just p
 
 ![Best Model ROC](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Best_Model_ROC_SMOTE_ROC.png)
 
-### Feature Importance
+### Feature Importance (Top 20)
 
 ![Feature Importance Best Model](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Best_Model_xgboost_Feature_Importance.png)
 
