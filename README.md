@@ -190,7 +190,7 @@ Best: ROC
 
 #### Elastic Net
 
-[graph] Not Available
+![Elastic Net Metric](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Elastic_net_Metric.png)
 
 Insights:
 1. Not materially different from lasso smote, not using
@@ -259,6 +259,15 @@ Results with all default values. 3 iterations:
 | Precision | 0.5617529880478087 |
 | Area under ROC | 0.89118913178127 |
 | Area Under PR | 0.4668793647115093 |
+
+#### Comapring Baselines
+
+![Comparing baselines models before parameter tuning](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Comapring_Baseline_models_enseble_tree_before_parameter_tuning.png)
+
+Insights:
+-   Imbalanced does better than in logistic - more fake predictions
+-   Class weighting relatively poor precision but good recall/TPR
+-   SMOTE fairly balanced
 
 #### Parameter Tuning
 Ideally would do full grid search with all parameters, but resource needs too much so doing sequential tuning instead.
