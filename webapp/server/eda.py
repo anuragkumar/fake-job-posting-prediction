@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask import render_template
+from flask import render_template, send_from_directory
 from flask import jsonify
 from flask import request
 from data import Data
@@ -13,9 +13,9 @@ def eda():
     return "list of accounts"
 
 
-@eda_api.route("/scatterHTML")
-def send_scatter_html():
-    return render_template('scattertext_benefits.html')
+# @eda_api.route("/scatterHTML")
+# def send_scatter_html():
+#     return render_template('scattertext_benefits.html', password=u"You should know, right?")
 
 
 @eda_api.route("/industry", methods=['POST'])

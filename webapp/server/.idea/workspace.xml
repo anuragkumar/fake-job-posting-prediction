@@ -2,14 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399133cf-3bc1-420b-9745-7ba1ea7f58ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../data_with_predictions.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../finaldf.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../fpr.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lasso_list_scoring.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lasso_list_scoring_smote.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lasso_list_scoring_smote_elasticnet.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../scattertext_text.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../topic_vis.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tpr.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../coherence_values.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/../../coherence_values.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../fake_job_postings.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../fake_job_postings.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../model_list.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/../../model_list.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../scattertext_benefits.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../scattertext_benefits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../scattertext_company_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../scattertext_company_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../scattertext_description.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../scattertext_description.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../scattertext_requirements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../scattertext_requirements.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../scattertext_title.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../scattertext_title.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../textlst.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/../../textlst.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eda.py" beforeDir="false" afterPath="$PROJECT_DIR$/eda.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing_file.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/testing_file.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/app/pages/icons/icons.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/pages/icons/icons.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/pages/icons/icons.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/pages/icons/icons.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/services/data.client.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/services/data.client.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,54 +37,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.py">
+        <entry file="file://$PROJECT_DIR$/eda.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="351">
+              <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
               <folding>
-                <element signature="e#0#44#0" expanded="true" />
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_api.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="27" selection-start-column="27" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data.py">
+        <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+            <state relative-caret-position="232">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/eda.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#0#44#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,14 +77,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/routes.py" />
-        <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/data_api.py" />
-        <option value="$PROJECT_DIR$/eda.py" />
         <option value="$PROJECT_DIR$/data.py" />
+        <option value="$PROJECT_DIR$/eda.py" />
+        <option value="$PROJECT_DIR$/server.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-2265" />
     <option name="y" value="91" />
     <option name="width" value="2400" />
@@ -179,8 +166,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1927" y="102" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1927" y="102" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -210,30 +196,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="27" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eda.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -243,6 +209,26 @@
           <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eda.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -15,8 +15,9 @@ export class DataClientService {
   }
 
   getScatterTemplate = () => {
-    return fetch('http://localhost:5000/eda/scatterHTML')
-      .then(res => res.json());
+    // return fetch('http://localhost:5000/data/scattertext_benefits.html')
+    //   .then(res => res.text());
+     return this.httpClient.get('http://localhost:5000/data/scattertext_benefits.html', { responseType: 'text' });
   }
 
   getBarPlotData = (plotInfo) => {

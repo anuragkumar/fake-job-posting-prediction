@@ -15,6 +15,8 @@ export class IconsComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
+  // private myTemplate: any = '';
+
   constructor(private dataService: DataClientService) {}
 
   ngOnInit() {
@@ -30,6 +32,10 @@ export class IconsComponent implements OnInit {
     this.createMyChart('telecommuting', 'telecommuteChart', 'darkRed', 'bar', true);
     this.createMyChart('has_company_logo', 'companyLogoChart', 'darkOrange', 'bar', true);
     this.createMyChart('has_questions', 'hasQuestionsChart', 'lightGrey', 'bar', true);
+
+    // this.dataService.getScatterTemplate().subscribe((res:string) => {
+    //   this.myTemplate = res;
+    // });
   }
 
   public updateOptions() {
