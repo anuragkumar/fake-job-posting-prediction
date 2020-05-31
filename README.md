@@ -293,8 +293,8 @@ Fit models with each of the 4 scoring metrics for both SMOTE and class weighted 
 ![Ensemble Tree SMOTE Parameter Tuned](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Ensemble_Tree_Model_Parameter_Tuned_SMOTE.png)
 
 Insights:
-- all very similar, ROC slightly better 
-- baseline significantly worse
+- All very similar, ROC slightly better across most metrics
+- Recall results in worse precision
 - Concerns about overfitting: when training, ROC was 0.999 but 0.83 on testing data. Worried that if get new test data, won't perform well because too variable.       
          
 Best: ROC
@@ -305,8 +305,8 @@ Best: ROC
 
 Insights:
 - ROC overall most balanced. Very similar to precision
-- Recall much higher TPR, FPR. Low precision
-- Baseline significantly worse          
+- Recall much higher TPR, FPR. Low precision    
+- Baseline better ROC and FNR than tuned models. But worse precision.         
            
 Best: ROC 
 
