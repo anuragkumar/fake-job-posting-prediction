@@ -175,7 +175,8 @@ Insights:
 2. ROC, precision, recall all pretty similar. 
 3. Recall does the best at minimizing FNR (as is its purpose) and everything else is just slightly worse
 4. Precision more balanced, unclear which is better
-5. Baseline only slightly worse than tuned results
+5. Baseline only slightly worse than tuned results      
+          
 Best: Recall or precision
 
 #### SMOTE
@@ -183,7 +184,8 @@ Best: Recall or precision
 ![SMOTE Regularized LR](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/SMOTE_Regularized_LR.png)
 
 Insights:
-1. best model: ROC (all effectively the same incl baseline)
+1. best model: ROC (all effectively the same incl baseline)      
+         
 Best: ROC   
 
 #### Elastic Net
@@ -284,7 +286,8 @@ Fit models with each of the 4 scoring metrics for both SMOTE and class weighted 
 Insights:
 - all very similar, ROC slightly better 
 - baseline significantly worse
-- Concerns about overfitting: when training, ROC was 0.999 but 0.83 on testing data. Worried that if get new test data, won't perform well because too variable. 
+- Concerns about overfitting: when training, ROC was 0.999 but 0.83 on testing data. Worried that if get new test data, won't perform well because too variable.       
+         
 Best: ROC
 
 ##### Balanced Weighting
@@ -294,7 +297,8 @@ Best: ROC
 Insights:
 - ROC overall most balanced. Very similar to precision
 - Recall much higher TPR, FPR. Low precision
-- Baseline significantly worse
+- Baseline significantly worse          
+           
 Best: ROC 
 
 #### Comparing Class Weighted ROC vs SMOTE
