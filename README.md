@@ -337,7 +337,7 @@ Would need disclaimers that this does not guarentee the post is not fake, just p
 
 ### ROC Curve
 
-![Best Model ROC](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Best_Model_ROC_SMOTE_ROC.png)
+![Best Model ROC](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/best_Model_xgboost_class_weighting_roc_scoring_ROC.png)
 
 ### Feature Importance (Top 20)
 
