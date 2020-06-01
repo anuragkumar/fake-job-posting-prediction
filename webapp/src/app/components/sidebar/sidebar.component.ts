@@ -30,10 +30,24 @@ export const ROUTES: RouteInfo[] = [
     class: ''
   },
   {
+    path: '/tables',
+    title: 'Data Distribution Analysis',
+    rtlTitle: 'قائمة الجدول',
+    icon: 'icon-puzzle-10',
+    class: ''
+  },
+  {
     path: '/icons',
-    title: 'exploratory data analysis',
+    title: 'Fraudulent data analysis',
     rtlTitle: 'الرموز',
     icon: 'icon-atom',
+    class: ''
+  },
+  {
+    path: '/typography',
+    title: 'External EDAs',
+    rtlTitle: 'طباعة',
+    icon: 'icon-align-center',
     class: ''
   },
   {
@@ -41,21 +55,8 @@ export const ROUTES: RouteInfo[] = [
     title: 'Maps',
     rtlTitle: 'خرائط',
     icon: 'icon-pin',
-    class: '' },
-  // {
-  //   path: '/tables',
-  //   title: 'Table List',
-  //   rtlTitle: 'قائمة الجدول',
-  //   icon: 'icon-puzzle-10',
-  //   class: ''
-  // },
-  // {
-  //   path: '/typography',
-  //   title: 'Typography',
-  //   rtlTitle: 'طباعة',
-  //   icon: 'icon-align-center',
-  //   class: ''
-  // },
+    class: '',
+  },
   // {
   //   path: '/rtl',
   //   title: 'RTL Support',

@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
         var mapOptions = {
             zoom: 13,
             center: myLatlng,
-            scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+            scrollwheel: false, // we disable de scroll over the map, it is a really annoing when you scroll through page
             styles: [{
                 "elementType": "geometry",
                 "stylers": [{

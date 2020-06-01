@@ -22,7 +22,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let d of jobsData">
-                <td [ngStyle]="{'background-color':d.fraudulent === 0 ? 'None' : '#ED2939' }">{{d.fraudulent}}</td>
+                <td [ngClass]="d.fraudulent === 0 ? 'bg-info' : 'bg-danger'">{{d.fraudulent}}</td>
                 <td>{{d.job_id}}</td>
                 <td>{{d.title}}</td>
                 <td>{{d.location}}</td>
