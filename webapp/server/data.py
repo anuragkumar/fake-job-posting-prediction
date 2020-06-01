@@ -7,12 +7,27 @@ from langdetect import detect
 class Data:
     def __init__(self):
         self.data = pd.read_excel("./data/clean_fake_job_postings.xlsx")
+        self.predicted_data = pd.read_csv("./data/data_with_predictions.csv")
 
     def get_random_sample(self):
         # getting all fraud data
         fraud = self.data[self.data['fraudulent'] == 1]
         # getting all real data
         real = self.data[self.data['fraudulent'] == 0]
+        # filtering only 30 rows from them to show initially
+        fraud = fraud.iloc[0:30]
+        real = real.iloc[0:30]
+        # creating a small balanced data frame
+        small_balanced_data = pd.concat([fraud, real])
+        # randomly re-shuffling the data
+        small_balanced_data_random = small_balanced_data.sample(frac=1).reset_index(drop=True)
+        return small_balanced_data_random
+
+    def get_predicted_random_sample(self):
+        # getting all fraud data
+        fraud = self.predicted_data[self.predicted_data['fraudulent'] == 1]
+        # getting all real data
+        real = self.predicted_data[self.predicted_data['fraudulent'] == 0]
         # filtering only 30 rows from them to show initially
         fraud = fraud.iloc[0:30]
         real = real.iloc[0:30]
@@ -49,6 +64,22 @@ class Data:
         data_list.append(keys)
         data_list.append(values)
         return data_list
+
+    def get_orig_plot_data(self, col, tail=False):
+        # 1 vs 2 plots in the figure
+        pd = {}
+        if tail:
+            num = 10
+            tail = self.data[col].value_counts().tail(10)
+            pd = tail.to_dict()
+        else:
+            num = 1000
+            head = self.data[col].value_counts().head(10)
+            pd = head.to_dict()
+        l = []
+        l.append(list(pd.keys()))
+        l.append(list(pd.values()))
+        return l
 
     def clean_data(self):
         """

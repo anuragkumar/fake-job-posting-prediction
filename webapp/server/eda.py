@@ -25,3 +25,12 @@ def get_industry_bar_plot_data():
     flag = req_data.get('boolean')
     return jsonify(data_obj.get_plot_data(req, flag))
 
+
+@eda_api.route("/origPlot", methods=['POST'])
+def get_orig_bar_plot_data():
+    req_data = request.get_json()
+    req = req_data.get('plotName')
+    flag = req_data.get('boolean')
+    return jsonify(data_obj.get_orig_plot_data(req, flag))
+
+

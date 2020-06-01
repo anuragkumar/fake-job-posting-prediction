@@ -9,3 +9,9 @@ data_obj = Data()
 def get_data():
     return data_obj.get_random_sample().to_json(orient='records')
 
+
+@data_api.route("/predictedDataRecords")
+def get_predicted_data():
+    return data_obj.get_predicted_random_sample().to_json(orient='records')
+
+
