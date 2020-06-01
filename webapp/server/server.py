@@ -19,6 +19,12 @@ def hello():
 def data(filepath):
     return send_from_directory('data', filepath)
 
+
+@app.route('/templates/<path:filepath>')
+def template_files(filepath):
+    return send_from_directory('templates', filepath)
+
+
 # @app.route('/<path:path>', methods=['GET'])
 # def static_proxy(path):
 #     return send_from_directory('../dist', path)

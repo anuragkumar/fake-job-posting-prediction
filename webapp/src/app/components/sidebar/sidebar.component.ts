@@ -16,6 +16,20 @@ export const ROUTES: RouteInfo[] = [
     class: ''
   },
   {
+    path: '/notifications',
+    title: 'Dataset',
+    rtlTitle: 'إخطارات',
+    icon: 'icon-bell-55',
+    class: ''
+  },
+  {
+    path: '/user',
+    title: 'Predicted Dataset',
+    rtlTitle: 'ملف تعريفي للمستخدم',
+    icon: 'icon-single-02',
+    class: ''
+  },
+  {
     path: '/icons',
     title: 'exploratory data analysis',
     rtlTitle: 'الرموز',
@@ -28,21 +42,6 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: 'خرائط',
     icon: 'icon-pin',
     class: '' },
-  // {
-  //   path: '/notifications',
-  //   title: 'Notifications',
-  //   rtlTitle: 'إخطارات',
-  //   icon: 'icon-bell-55',
-  //   class: ''
-  // },
-  //
-  // {
-  //   path: '/user',
-  //   title: 'User Profile',
-  //   rtlTitle: 'ملف تعريفي للمستخدم',
-  //   icon: 'icon-single-02',
-  //   class: ''
-  // },
   // {
   //   path: '/tables',
   //   title: 'Table List',
