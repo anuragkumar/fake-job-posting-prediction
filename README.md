@@ -26,7 +26,7 @@ Following are the steps performed for data engineering:
  - Drop salary column: it is very often missing and unsure what units are used in foreign countries, inconsistent time frame. There is no way to standardize this column for such wide range of values
 
 ## EDA
-Exploratory Data Analysis of this dataset can be found at this URL.
+Exploratory Data Analysis of this dataset can be found at this [URL](https://ds54510-infovis.herokuapp.com/#/tables).
 It also contains detailed description of various analysis and insights found about the data.
 
 # Modeling
@@ -353,4 +353,4 @@ Would need disclaimers that this does not guarentee the post is not fake, just p
 ![Feature Importance Best Model](https://github.com/anuragkumar/fake-job-posting-prediction/blob/master/metrics_images/Best_Model_xgboost_Feature_Importance.png)
 
 ## Merged Predictions with full Test Data and is displayed in Dashboard
-[link]
+[Dashboard](https://ds54510-infovis.herokuapp.com/#/user)
