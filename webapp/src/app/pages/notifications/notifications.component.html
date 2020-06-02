@@ -1,0 +1,43 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-12">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <div class=" row">
+            <div class=" col-sm-6 text-left">
+              <h5 class=" card-category">Job Postings</h5>
+              <h2 class=" card-title">Original Dataset</h2>
+            </div>
+          </div>
+        </div>
+        <div class=" card-body">
+          <!--<div class=" chart-area"><canvas id="chartBig1"> </canvas></div>-->
+          <div>
+            <table id="dtHorizontalVerticalExample" class="table table-striped table-sm " cellspacing="0"
+                   width="100%">
+              <thead class="thead-light">
+              <tr>
+                <th *ngFor="let fea of selectedFeatures"> {{fea}} </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let d of jobsData">
+                <td [ngClass]="d.fraudulent === 0 ? 'bg-info' : 'bg-danger'">{{d.fraudulent}}</td>
+                <td>{{d.job_id}}</td>
+                <td>{{d.title}}</td>
+                <td>{{d.location}}</td>
+                <td>{{d.department}}</td>
+                <td>{{d.employment_type}}</td>
+                <td>{{d.required_experience}}</td>
+                <td>{{d.required_education}}</td>
+                <td>{{d.industry}}</td>
+                <td>{{d.function}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

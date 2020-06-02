@@ -1,2 +1,7 @@
 .ipynb_checkpoints
+<<<<<<< HEAD
+webapp/server/.idea/workspace.xml
+webapp/server/__pycache__/
+=======
+>>>>>>> modeling
 webapp/server/.idea
